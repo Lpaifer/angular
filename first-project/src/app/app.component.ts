@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -7,14 +8,14 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div style="max-width: 500px; margin: 0 auto;">
-      <h2>Lista de Tarefas 📝</h2>
+    <div style="max-width: 500px; margin: auto;">
+      <h1>📝 Lista de Tarefas</h1>
 
       <input [(ngModel)]="novaTarefa" placeholder="Digite uma tarefa" />
       <button (click)="adicionarTarefa()">Adicionar</button>
 
       <ul>
-        <li *ngFor="let tarefa of listaTarefas; let i = index">
+        <li *ngFor="let tarefa of tarefas; let i = index">
           {{ tarefa }}
           <button (click)="removerTarefa(i)">❌</button>
         </li>
@@ -24,16 +25,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   novaTarefa = '';
-  listaTarefas: string[] = [];
+  tarefas: string[] = [];
 
   adicionarTarefa() {
     if (this.novaTarefa.trim()) {
-      this.listaTarefas.push(this.novaTarefa);
+      this.tarefas.push(this.novaTarefa);
       this.novaTarefa = '';
     }
   }
 
-  removerTarefa(indice: number) {
-    this.listaTarefas.splice(indice, 1);
+  removerTarefa(index: number) {
+    this.tarefas.splice(index, 1);
   }
 }

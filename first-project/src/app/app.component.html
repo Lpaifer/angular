@@ -1,1 +1,14 @@
-<app-tarefas></app-tarefas>
+<div style="max-width: 500px; margin: auto;">
+    <h1>Lista de Tarefas</h1>
+  
+    <input [(ngModel)]="novaTarefa" placeholder="Digite uma tarefa" />
+    <button (click)="adicionarTarefa()">Adicionar</button>
+  
+    <ul>
+      <li *ngFor="let tarefa of tarefas; let i = index">
+        {{ tarefa }}
+        <button (click)="removerTarefa(i)">❌</button>
+      </li>
+    </ul>
+  </div>
+  
